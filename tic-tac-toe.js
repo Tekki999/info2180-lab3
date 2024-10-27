@@ -16,8 +16,21 @@ document.addEventListener("DOMContentLoaded", () => {
         currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
     }
 
+    function handleMouseOver(event) {
+        const square = event.target;
+        if (!square.textContent) {
+            square.classList.add('hover');
+        }
+    }
+    function handleMouseOut(event) {
+        const square = event.target;
+        square.classList.remove('hover');
+    }
+
     squares.forEach(square => {
         square.classList.add('square');
         square.addEventListener('click', handleSquareClick);
+        square.addEventListener('mouseover', handleMouseOver);
+        square.addEventListener('mouseout', handleMouseOut);
     });
 });
